@@ -37,13 +37,11 @@ const Home = () => {
                 Trusted Healthcare Platform
               </div>
               <h1>
-                Book Appointments <br />
-                With <span className="gradient-text">Trusted Doctors</span>
+                Your Health Journey<br />
+                Digitally Managed and   <span className="gradient-text">Always Accessible</span>
               </h1>
               <p>
-                Connect with verified healthcare professionals instantly. 
-                Schedule appointments, get expert consultations, and manage 
-                your health journey all in one place.
+                
               </p>
               <div className="hero-actions">
                 <Link to="/doctors" className="book-appointment-btn primary">

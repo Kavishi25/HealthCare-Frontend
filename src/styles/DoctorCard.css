@@ -1,0 +1,228 @@
+/* Main Card Container */
+.rasa-doctor-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background-color: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.rasa-doctor-card:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.rasa-doctor-card:active {
+  transform: translateY(0);
+}
+
+/* Selected State */
+.rasa-doctor-card-selected {
+  border-color: #3b82f6;
+  background-color: #eff6ff;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+}
+
+/* Focus State for Accessibility */
+.rasa-doctor-card:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Doctor Avatar */
+.rasa-doctor-avatar {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+.rasa-doctor-initial {
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Doctor Information Section */
+.rasa-doctor-info {
+  flex: 1;
+  min-width: 0; /* Allows text truncation */
+}
+
+.rasa-doctor-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 8px 0;
+}
+
+.rasa-doctor-specialty {
+  margin: 0 0 8px 0;
+}
+
+/* Specialty Badge */
+.rasa-specialty-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  background-color: #dbeafe;
+  color: #1e40af;
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Availability Section */
+.rasa-doctor-availability {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  font-size: 13px;
+  color: #059669;
+}
+
+.rasa-availability-icon {
+  font-size: 16px;
+}
+
+.rasa-availability-text {
+  font-weight: 500;
+}
+
+.rasa-slots-count {
+  color: #6b7280;
+  font-weight: 400;
+}
+
+/* No Availability State */
+.rasa-no-availability {
+  color: #dc2626;
+}
+
+/* Doctor Action Section */
+.rasa-doctor-action {
+  flex-shrink: 0;
+}
+
+/* Select Button */
+.rasa-select-btn {
+  padding: 10px 24px;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rasa-select-btn:hover {
+  background-color: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+}
+
+.rasa-select-btn:active {
+  transform: translateY(0);
+}
+
+/* Selected Button State */
+.rasa-select-btn-active {
+  background-color: #10b981;
+}
+
+.rasa-select-btn-active:hover {
+  background-color: #059669;
+}
+
+.rasa-btn-icon {
+  font-size: 16px;
+}
+
+/* Selected Badge (Corner Badge) */
+.rasa-selected-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 28px;
+  height: 28px;
+  background-color: #10b981;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
+  animation: rasa-badge-pop 0.3s ease;
+}
+
+@keyframes rasa-badge-pop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .rasa-doctor-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .rasa-doctor-info {
+    width: 100%;
+  }
+  
+  .rasa-doctor-action {
+    width: 100%;
+  }
+  
+  .rasa-select-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .rasa-selected-badge {
+    top: 8px;
+    right: 8px;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .rasa-doctor-card {
+    border: 1px solid #000;
+    break-inside: avoid;
+  }
+  
+  .rasa-select-btn {
+    display: none;
+  }
+}

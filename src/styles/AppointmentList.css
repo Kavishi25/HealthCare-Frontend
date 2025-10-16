@@ -1,0 +1,151 @@
+/* Main Container */
+.rasa-appointment-list-container {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+}
+
+/* Header Section */
+.rasa-list-header {
+  margin-bottom: 24px;
+}
+
+.rasa-list-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 16px 0;
+}
+
+/* Filter Tabs */
+.rasa-filter-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.rasa-filter-tab {
+  padding: 10px 20px;
+  background-color: #f3f4f6;
+  color: #6b7280;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rasa-filter-tab:hover {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+.rasa-filter-tab:active {
+  transform: scale(0.98);
+}
+
+/* Active Filter Tab */
+.rasa-filter-active {
+  background-color: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}
+
+.rasa-filter-active:hover {
+  background-color: #2563eb;
+  color: white;
+}
+
+.rasa-tab-count {
+  font-weight: 600;
+}
+
+/* Loading State */
+.rasa-list-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  color: #6b7280;
+  font-size: 16px;
+}
+
+.rasa-loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f4f6;
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: rasa-spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes rasa-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Empty State */
+.rasa-list-empty {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #f9fafb;
+  border-radius: 8px;
+  border: 2px dashed #e5e7eb;
+}
+
+.rasa-empty-icon {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+
+.rasa-empty-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 8px 0;
+}
+
+.rasa-empty-text {
+  font-size: 15px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Appointments Grid */
+.rasa-appointments-grid {
+  display: grid;
+  gap: 16px;
+}
+
+/* Results Summary */
+.rasa-list-summary {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+  text-align: center;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .rasa-appointment-list-container {
+    padding: 16px;
+  }
+
+  .rasa-filter-tabs {
+    flex-direction: column;
+  }
+
+  .rasa-filter-tab {
+    width: 100%;
+    justify-content: center;
+  }
+}

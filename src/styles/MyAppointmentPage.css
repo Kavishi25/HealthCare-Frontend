@@ -1,0 +1,783 @@
+/* Page Container */
+.rasa-my-appointments-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2rem 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+}
+
+.rasa-appointments-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   PAGE HEADER
+   ============================================ */
+.rasa-appointments-header {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  animation: rasa-fadeInDown 0.6s ease-out;
+}
+
+.rasa-header-content {
+  flex: 1;
+  min-width: 250px;
+}
+
+.rasa-header-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.rasa-appointments-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  letter-spacing: -0.5px;
+}
+
+.rasa-appointments-subtitle {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 400;
+}
+
+.rasa-header-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Action Buttons */
+.rasa-refresh-btn,
+.rasa-book-new-btn {
+  padding: 0.9rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: none;
+  white-space: nowrap;
+}
+
+.rasa-refresh-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.rasa-refresh-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.rasa-refresh-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.rasa-refresh-btn.rasa-refreshing .rasa-refresh-icon {
+  animation: rasa-spin 1s linear infinite;
+}
+
+.rasa-book-new-btn {
+  background: white;
+  color: #667eea;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.rasa-book-new-btn:hover {
+  background: #f8f9ff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.rasa-book-icon,
+.rasa-refresh-icon {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================
+   STATISTICS CARDS
+   ============================================ */
+.rasa-stats-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  animation: rasa-fadeIn 0.6s ease-out 0.2s both;
+}
+
+.rasa-stat-card {
+  background: white;
+  border-radius: 15px;
+  padding: 1.75rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.rasa-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.rasa-stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.rasa-stat-card:hover::before {
+  transform: scaleX(1);
+}
+
+.rasa-stat-card.rasa-stat-active {
+  border: 2px solid #667eea;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+}
+
+.rasa-stat-card.rasa-stat-active::before {
+  transform: scaleX(1);
+}
+
+.rasa-stat-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.rasa-stat-card:hover .rasa-stat-icon-wrapper {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.rasa-stat-total .rasa-stat-icon-wrapper {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.rasa-stat-upcoming .rasa-stat-icon-wrapper {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+}
+
+.rasa-stat-completed .rasa-stat-icon-wrapper {
+  background: linear-gradient(135deg, #43e97b, #38f9d7);
+}
+
+.rasa-stat-cancelled .rasa-stat-icon-wrapper {
+  background: linear-gradient(135deg, #fa709a, #fee140);
+}
+
+.rasa-stat-icon {
+  font-size: 1.75rem;
+}
+
+.rasa-stat-content {
+  flex: 1;
+}
+
+.rasa-stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.rasa-stat-label {
+  font-size: 0.95rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.rasa-stat-trend {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 0.75rem;
+  color: #999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.rasa-stat-card:hover .rasa-stat-trend {
+  opacity: 1;
+}
+
+/* ============================================
+   FILTER TABS (Mobile-Friendly)
+   ============================================ */
+.rasa-filter-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  overflow-x: auto;
+  padding: 0.5rem 0;
+  animation: rasa-fadeIn 0.6s ease-out 0.3s both;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+.rasa-filter-tabs::-webkit-scrollbar {
+  height: 6px;
+}
+
+.rasa-filter-tabs::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.rasa-filter-tabs::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.rasa-filter-tab {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  color: white;
+  font-weight: 500;
+}
+
+.rasa-filter-tab:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.rasa-filter-tab.rasa-filter-active {
+  background: white;
+  color: #667eea;
+  border-color: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.rasa-filter-icon {
+  font-size: 1.2rem;
+}
+
+.rasa-filter-label {
+  font-size: 0.95rem;
+}
+
+.rasa-filter-count {
+  background: rgba(102, 126, 234, 0.2);
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.rasa-filter-tab.rasa-filter-active .rasa-filter-count {
+  background: #667eea;
+  color: white;
+}
+
+/* ============================================
+   CONTENT AREA
+   ============================================ */
+.rasa-appointments-content {
+  animation: rasa-fadeIn 0.6s ease-out 0.4s both;
+}
+
+.rasa-content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding: 0 0.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.rasa-content-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.rasa-content-count {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ============================================
+   LOADING & ERROR STATES
+   ============================================ */
+.rasa-loading-wrapper,
+.rasa-error-wrapper {
+  background: white;
+  border-radius: 15px;
+  padding: 3rem;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  animation: rasa-fadeIn 0.5s ease-out;
+}
+
+/* ============================================
+   EMPTY STATES
+   ============================================ */
+.rasa-empty-state {
+  background: white;
+  border-radius: 20px;
+  padding: 4rem 2rem;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  animation: rasa-fadeIn 0.6s ease-out;
+}
+
+.rasa-empty-illustration {
+  margin-bottom: 2rem;
+}
+
+.rasa-empty-icon-wrapper {
+  display: inline-block;
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: rasa-float 3s ease-in-out infinite;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+}
+
+.rasa-empty-icon {
+  font-size: 4rem;
+}
+
+.rasa-empty-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.rasa-empty-text {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 2rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.rasa-empty-features {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.rasa-empty-feature {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: #f8f9ff;
+  border-radius: 12px;
+  color: #667eea;
+  font-weight: 600;
+}
+
+.rasa-feature-icon {
+  font-size: 1.5rem;
+}
+
+.rasa-empty-book-btn {
+  padding: 1.2rem 2.5rem;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.rasa-empty-book-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+/* Empty Filter State */
+.rasa-empty-filter-state {
+  background: white;
+  border-radius: 15px;
+  padding: 3rem 2rem;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  animation: rasa-fadeIn 0.5s ease-out;
+}
+
+.rasa-empty-filter-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  animation: rasa-pulse 2s ease-in-out infinite;
+}
+
+.rasa-empty-filter-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.75rem;
+}
+
+.rasa-empty-filter-text {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.rasa-filter-reset-btn {
+  padding: 0.9rem 1.75rem;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.rasa-filter-reset-btn:hover {
+  background: #5568d3;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes rasa-fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rasa-fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rasa-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rasa-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes rasa-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 992px) {
+  .rasa-appointments-header {
+    padding: 2rem;
+  }
+
+  .rasa-appointments-title {
+    font-size: 2rem;
+  }
+
+  .rasa-stats-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .rasa-my-appointments-page {
+    padding: 1.5rem 1rem;
+  }
+
+  .rasa-appointments-header {
+    padding: 1.5rem;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .rasa-header-content {
+    text-align: center;
+  }
+
+  .rasa-appointments-title {
+    font-size: 1.75rem;
+  }
+
+  .rasa-appointments-subtitle {
+    font-size: 1rem;
+  }
+
+  .rasa-header-actions {
+    justify-content: center;
+  }
+
+  .rasa-refresh-btn,
+  .rasa-book-new-btn {
+    flex: 1;
+  }
+
+  .rasa-stats-section {
+    grid-template-columns: 1fr;
+  }
+
+  .rasa-stat-card {
+    padding: 1.5rem;
+  }
+
+  .rasa-content-header {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .rasa-empty-features {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .rasa-empty-feature {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .rasa-appointments-title {
+    font-size: 1.5rem;
+  }
+
+  .rasa-header-badge {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.8rem;
+  }
+
+  .rasa-header-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .rasa-refresh-btn,
+  .rasa-book-new-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .rasa-stat-icon-wrapper {
+    width: 50px;
+    height: 50px;
+  }
+
+  .rasa-stat-icon {
+    font-size: 1.5rem;
+  }
+
+  .rasa-stat-value {
+    font-size: 1.5rem;
+  }
+
+  .rasa-filter-tabs {
+    gap: 0.5rem;
+  }
+
+  .rasa-filter-tab {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .rasa-empty-icon-wrapper {
+    width: 100px;
+    height: 100px;
+  }
+
+  .rasa-empty-icon {
+    font-size: 3rem;
+  }
+
+  .rasa-empty-title {
+    font-size: 1.5rem;
+  }
+
+  .rasa-empty-text {
+    font-size: 1rem;
+  }
+
+  .rasa-empty-book-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+.rasa-stat-card:focus,
+.rasa-filter-tab:focus,
+.rasa-refresh-btn:focus,
+.rasa-book-new-btn:focus,
+.rasa-empty-book-btn:focus,
+.rasa-filter-reset-btn:focus {
+  outline: 3px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+.rasa-stat-card:focus-visible,
+.rasa-filter-tab:focus-visible {
+  outline: 3px solid #667eea;
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+  .rasa-my-appointments-page {
+    background: white;
+    padding: 0;
+  }
+
+  .rasa-appointments-header,
+  .rasa-stats-section,
+  .rasa-filter-tabs {
+    background: white;
+    color: black;
+  }
+
+  .rasa-header-actions,
+  .rasa-refresh-btn,
+  .rasa-book-new-btn,
+  .rasa-empty-book-btn,
+  .rasa-filter-reset-btn {
+    display: none;
+  }
+
+  .rasa-stat-card {
+    break-inside: avoid;
+  }
+}
+
+/* ============================================
+   DARK MODE SUPPORT (Optional)
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+  .rasa-stat-card,
+  .rasa-empty-state,
+  .rasa-empty-filter-state,
+  .rasa-loading-wrapper,
+  .rasa-error-wrapper {
+    background: rgba(255, 255, 255, 0.95);
+  }
+}
+
+/* ============================================
+   REDUCED MOTION SUPPORT
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .rasa-empty-icon-wrapper {
+    animation: none;
+  }
+
+  .rasa-refresh-btn.rasa-refreshing .rasa-refresh-icon {
+    animation: none;
+  }
+}

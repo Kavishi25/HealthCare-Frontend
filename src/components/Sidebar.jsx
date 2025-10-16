@@ -29,9 +29,11 @@ const Sidebar = () => {
         <div className="user-info">
           <div className="user-avatar">
             <img
-              src="https://via.placeholder.com/40x40/4f46e5/ffffff?text=P"
-              alt="Profile"
+              src="/default-avatar.png"
+              alt="Doctor Avatar"
+              onError={(e) => (e.target.src = '/default-avatar.png')}
             />
+
           </div>
           <div className="user-details">
             <h4>Patient</h4>
@@ -46,9 +48,8 @@ const Sidebar = () => {
             <li key={index} className="nav-item">
               <Link
                 to={item.path}
-                className={`nav-link ${
-                  location.pathname === item.path ? "active" : ""
-                }`}
+                className={`nav-link ${location.pathname === item.path ? "active" : ""
+                  }`}
               >
                 <span className="nav-icon">{item.icon}</span>
                 <span className="nav-label">{item.label}</span>

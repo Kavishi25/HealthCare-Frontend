@@ -1,0 +1,90 @@
+/* Loading Container */
+.rasa-loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  min-height: 200px;
+}
+
+/* Spinner Base */
+.rasa-spinner {
+  position: relative;
+  display: inline-block;
+}
+
+/* Spinner Circle */
+.rasa-spinner-circle {
+  border-radius: 50%;
+  border-style: solid;
+  animation: rasa-spin 1s linear infinite;
+}
+
+/* Spinner Animation */
+@keyframes rasa-spin {
+  0% { 
+    transform: rotate(0deg); 
+  }
+  100% { 
+    transform: rotate(360deg); 
+  }
+}
+
+/* Spinner Sizes */
+.rasa-spinner-small .rasa-spinner-circle {
+  width: 24px;
+  height: 24px;
+  border-width: 3px;
+}
+
+.rasa-spinner-medium .rasa-spinner-circle {
+  width: 40px;
+  height: 40px;
+  border-width: 4px;
+}
+
+.rasa-spinner-large .rasa-spinner-circle {
+  width: 56px;
+  height: 56px;
+  border-width: 5px;
+}
+
+/* Spinner Color Variants */
+.rasa-spinner-primary .rasa-spinner-circle {
+  border-color: #f3f4f6;
+  border-top-color: #3b82f6;
+}
+
+.rasa-spinner-secondary .rasa-spinner-circle {
+  border-color: #f3f4f6;
+  border-top-color: #8b5cf6;
+}
+
+.rasa-spinner-white .rasa-spinner-circle {
+  border-color: rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+}
+
+/* Loading Text */
+.rasa-loading-text {
+  margin-top: 16px;
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Alternative Pulse Animation (Optional) */
+@keyframes rasa-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.rasa-loading-pulse {
+  animation: rasa-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}

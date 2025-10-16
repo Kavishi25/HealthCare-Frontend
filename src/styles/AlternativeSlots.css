@@ -1,0 +1,184 @@
+/* Main Container */
+.rasa-alternatives-container {
+  margin-top: 32px;
+  padding: 20px;
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border: 2px solid #86efac;
+  border-radius: 12px;
+}
+
+/* Title and Description */
+.rasa-alternatives-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #166534;
+  margin: 0 0 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rasa-alternatives-icon {
+  font-size: 22px;
+}
+
+.rasa-alternatives-description {
+  font-size: 14px;
+  color: #15803d;
+  margin: 0 0 16px 0;
+}
+
+/* Alternatives List */
+.rasa-alternatives-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Alternative Card */
+.rasa-alternative-card {
+  background-color: white;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #bbf7d0;
+  transition: all 0.2s ease;
+}
+
+.rasa-alternative-card:hover {
+  box-shadow: 0 4px 8px rgba(34, 197, 94, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Card Header */
+.rasa-alternative-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f0fdf4;
+}
+
+.rasa-alternative-date {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.rasa-alternative-day {
+  font-size: 16px;
+  font-weight: 600;
+  color: #166534;
+}
+
+.rasa-alternative-full-date {
+  font-size: 13px;
+  color: #16a34a;
+}
+
+.rasa-alternative-count {
+  padding: 4px 10px;
+  background-color: #dcfce7;
+  color: #166534;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Slots Container */
+.rasa-alternative-slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Alternative Slot Button */
+.rasa-alternative-slot-btn {
+  padding: 8px 16px;
+  background-color: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rasa-alternative-slot-btn:hover {
+  background-color: #22c55e;
+  color: white;
+  border-color: #22c55e;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(34, 197, 94, 0.3);
+}
+
+.rasa-alternative-slot-btn:active {
+  transform: translateY(0);
+}
+
+.rasa-alt-slot-arrow {
+  font-size: 14px;
+  transition: transform 0.2s ease;
+}
+
+.rasa-alternative-slot-btn:hover .rasa-alt-slot-arrow {
+  transform: translateX(3px);
+}
+
+.rasa-more-slots {
+  font-size: 13px;
+  color: #16a34a;
+  font-weight: 500;
+  padding: 4px 8px;
+}
+
+/* Loading State */
+.rasa-alternatives-loading {
+  margin-top: 32px;
+}
+
+/* Empty State */
+.rasa-alternatives-empty {
+  text-align: center;
+  padding: 32px 20px;
+  background-color: #fef3c7;
+  border-radius: 8px;
+  border: 1px solid #fcd34d;
+  margin-top: 24px;
+}
+
+.rasa-alternatives-empty-icon {
+  font-size: 56px;
+  margin-bottom: 16px;
+}
+
+.rasa-alternatives-empty-text {
+  color: #92400e;
+  margin: 0 0 8px 0;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.rasa-alternatives-empty-hint {
+  color: #b45309;
+  margin: 0;
+  font-size: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .rasa-alternative-slots {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .rasa-alternative-slot-btn {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

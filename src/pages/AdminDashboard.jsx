@@ -1,7 +1,10 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/AdminDashboard.css";
 
 const AdminDashboard = () => {
+  const navigate = useNavigate();
+
   const stats = [
     {
       icon: "💰",
@@ -58,19 +61,36 @@ const AdminDashboard = () => {
     {
       icon: "📊",
       label: "Dashboard",
+      path: "/admin-dashboard",
       isActive: true,
     },
     {
       icon: "📅",
       label: "Appointments",
+      path: "/admin/appointments",
+      isActive: false,
+    },
+    {
+      icon: "👨‍⚕️",
+      label: "Manage Doctors",
+      path: "/admin/manage-doctors",
       isActive: false,
     },
     {
       icon: "👤",
       label: "Profile",
+      path: "/admin/profile",
       isActive: false,
     },
   ];
+
+  const handleLogout = () => {
+    // Clear any stored auth tokens
+    localStorage.removeItem('adminToken');
+    localStorage.removeItem('patientId');
+    // Navigate to home
+    navigate('/');
+  };
 
   return (
     <div className="admin-layout">
@@ -88,7 +108,9 @@ const AdminDashboard = () => {
               />
             </div>
             <div className="admin-user-details">
-              <span className="admin-logout">Logout</span>
+              <button className="admin-logout" onClick={handleLogout}>
+                Logout
+              </button>
             </div>
           </div>
         </div>
@@ -97,13 +119,13 @@ const AdminDashboard = () => {
           <ul className="admin-nav-menu">
             {adminMenuItems.map((item, index) => (
               <li key={index} className="admin-nav-item">
-                <a
-                  href="#"
+                <Link
+                  to={item.path}
                   className={`admin-nav-link ${item.isActive ? "active" : ""}`}
                 >
                   <span className="admin-nav-icon">{item.icon}</span>
                   <span className="admin-nav-label">{item.label}</span>
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -129,6 +151,9 @@ const AdminDashboard = () => {
           <div className="admin-bookings-section">
             <div className="admin-section-header">
               <h2>📋 Latest Bookings</h2>
+              <Link to="/admin/appointments" className="view-all-link">
+                View All →
+              </Link>
             </div>
             <div className="admin-bookings-list">
               {bookings.map((booking) => (

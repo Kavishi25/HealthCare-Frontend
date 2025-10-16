@@ -1,64 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Header from "../components/Header";
+import { useDoctors } from "../hooks/useDoctors";
+import LoadingSpinner from "../components/common/LoadingSpinner";
+import ErrorMessage from "../components/common/ErrorMessage";
 import "../styles/Doctors.css";
 
 const Doctors = () => {
-  const doctors = [
-    {
-      id: 1,
-      name: "Dr. Sarah Johnson",
-      specialty: "Cardiologist",
-      experience: "10 years",
-      rating: 4.9,
-      image: "https://via.placeholder.com/150x150/4f46e5/ffffff?text=SJ",
-      available: true,
-    },
-    {
-      id: 2,
-      name: "Dr. Michael Chen",
-      specialty: "Neurologist",
-      experience: "8 years",
-      rating: 4.8,
-      image: "https://via.placeholder.com/150x150/10b981/ffffff?text=MC",
-      available: true,
-    },
-    {
-      id: 3,
-      name: "Dr. Emily Davis",
-      specialty: "Dermatologist",
-      experience: "12 years",
-      rating: 4.9,
-      image: "https://via.placeholder.com/150x150/f59e0b/ffffff?text=ED",
-      available: false,
-    },
-    {
-      id: 4,
-      name: "Dr. James Wilson",
-      specialty: "Orthopedist",
-      experience: "15 years",
-      rating: 4.7,
-      image: "https://via.placeholder.com/150x150/ef4444/ffffff?text=JW",
-      available: true,
-    },
-    {
-      id: 5,
-      name: "Dr. Lisa Anderson",
-      specialty: "Pediatrician",
-      experience: "7 years",
-      rating: 4.8,
-      image: "https://via.placeholder.com/150x150/8b5cf6/ffffff?text=LA",
-      available: true,
-    },
-    {
-      id: 6,
-      name: "Dr. Robert Brown",
-      specialty: "Ophthalmologist",
-      experience: "11 years",
-      rating: 4.6,
-      image: "https://via.placeholder.com/150x150/06b6d4/ffffff?text=RB",
-      available: true,
-    },
-  ];
+  const { doctors: allDoctors, loading, error, refetch } = useDoctors();
 
   return (
     <div className="doctors-page">
@@ -72,39 +21,66 @@ const Doctors = () => {
           </p>
         </div>
 
-        <div className="doctors-grid">
-          {doctors.map((doctor) => (
-            <div key={doctor.id} className="doctor-card">
-              <div className="doctor-image">
-                <img src={doctor.image} alt={doctor.name} />
-                <div
-                  className={`availability-badge ${
-                    doctor.available ? "available" : "unavailable"
-                  }`}
-                >
-                  {doctor.available ? "Available" : "Busy"}
-                </div>
-              </div>
+        {loading && <LoadingSpinner message="Loading doctors..." />}
+        {error && <ErrorMessage message={error} onRetry={refetch} />}
 
-              <div className="doctor-info">
-                <h3>{doctor.name}</h3>
-                <p className="specialty">{doctor.specialty}</p>
-                <p className="experience">{doctor.experience} experience</p>
-
-                <div className="doctor-rating">
-                  <span className="rating">⭐ {doctor.rating}</span>
+        {!loading && !error && (
+          <div className="doctors-grid">
+            {allDoctors.map((doctor) => (
+              <div key={doctor._id} className="doctor-card">
+                <div className="doctor-image">
+                  <div className="doctor-placeholder-avatar">
+                    {doctor.name.charAt(0).toUpperCase()}
+                  </div>
+                  <div
+                    className={`availability-badge ${
+                      doctor.availableSlots?.length > 0 ? "available" : "unavailable"
+                    }`}
+                  >
+                    {doctor.availableSlots?.length > 0 ? "Available" : "Busy"}
+                  </div>
                 </div>
 
-                <button
-                  className={`book-btn ${!doctor.available ? "disabled" : ""}`}
-                  disabled={!doctor.available}
-                >
-                  {doctor.available ? "Book Appointment" : "Not Available"}
-                </button>
+                <div className="doctor-info">
+                  <h3>Dr. {doctor.name}</h3>
+                  <p className="specialty">{doctor.specialty}</p>
+                  <p className="experience">
+                    {doctor.availableSlots?.length || 0} available slots
+                  </p>
+
+                  <div className="doctor-rating">
+                    <span className="rating">⭐ 4.8</span>
+                  </div>
+
+                  <Link
+                    to="/book-appointment"
+                    className={`book-btn ${
+                      !doctor.availableSlots?.length ? "disabled" : ""
+                    }`}
+                    onClick={(e) => {
+                      if (!doctor.availableSlots?.length) {
+                        e.preventDefault();
+                      } else {
+                        // Store selected doctor in localStorage for BookAppointmentPage
+                        localStorage.setItem('preSelectedDoctorId', doctor._id);
+                      }
+                    }}
+                  >
+                    {doctor.availableSlots?.length
+                      ? "Book Appointment"
+                      : "Not Available"}
+                  </Link>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
+
+        {!loading && !error && allDoctors.length === 0 && (
+          <div className="no-doctors">
+            <p>No doctors available at the moment.</p>
+          </div>
+        )}
       </main>
     </div>
   );

@@ -1,0 +1,204 @@
+/* Main Container */
+.rasa-timeslot-container {
+  background-color: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 24px;
+}
+
+/* Title and Subtitle */
+.rasa-timeslot-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 8px 0;
+}
+
+.rasa-timeslot-subtitle {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0 0 20px 0;
+  line-height: 1.5;
+}
+
+/* Date Selector */
+.rasa-date-selector {
+  margin-bottom: 24px;
+}
+
+.rasa-date-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.rasa-date-input {
+  width: 100%;
+  max-width: 300px;
+  padding: 12px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: all 0.2s ease;
+  background-color: white;
+  cursor: pointer;
+}
+
+.rasa-date-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.rasa-date-input:hover {
+  border-color: #d1d5db;
+}
+
+/* Slots Section */
+.rasa-slots-section {
+  margin-top: 24px;
+}
+
+.rasa-slots-date {
+  font-size: 15px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rasa-slots-icon {
+  font-size: 18px;
+}
+
+/* Slots Grid */
+.rasa-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+/* Slot Button */
+.rasa-slot-btn {
+  padding: 12px 16px;
+  background-color: white;
+  color: #374151;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.rasa-slot-btn:hover {
+  border-color: #3b82f6;
+  background-color: #eff6ff;
+  color: #1e40af;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.rasa-slot-btn:active {
+  transform: translateY(0);
+}
+
+/* Selected Slot */
+.rasa-slot-selected {
+  background-color: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}
+
+.rasa-slot-selected:hover {
+  background-color: #2563eb;
+  border-color: #2563eb;
+  color: white;
+}
+
+.rasa-slot-check {
+  font-size: 16px;
+  animation: rasa-check-pop 0.3s ease;
+}
+
+@keyframes rasa-check-pop {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.rasa-slots-hint {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0;
+  font-style: italic;
+}
+
+/* No Slots Available */
+.rasa-no-slots {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #fef3c7;
+  border-radius: 8px;
+  border: 1px solid #fcd34d;
+  margin-top: 24px;
+}
+
+.rasa-no-slots-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.rasa-no-slots-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: #92400e;
+  margin: 0 0 8px 0;
+}
+
+.rasa-no-slots-subtitle {
+  font-size: 14px;
+  color: #b45309;
+  margin: 0;
+}
+
+/* Empty State */
+.rasa-timeslot-empty {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #f3f4f6;
+  border-radius: 8px;
+  color: #6b7280;
+}
+
+.rasa-empty-icon {
+  font-size: 56px;
+  margin-bottom: 12px;
+}
+
+.rasa-empty-message {
+  font-size: 15px;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .rasa-slots-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .rasa-date-input {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,187 @@
+/* Error Container */
+.rasa-error-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  border-radius: 12px;
+  border: 2px solid;
+  background-color: white;
+  animation: rasa-error-fade-in 0.3s ease-out;
+}
+
+@keyframes rasa-error-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Error Types */
+.rasa-error-error {
+  border-color: #fecaca;
+  background-color: #fef2f2;
+}
+
+.rasa-error-warning {
+  border-color: #fcd34d;
+  background-color: #fffbeb;
+}
+
+.rasa-error-info {
+  border-color: #bfdbfe;
+  background-color: #eff6ff;
+}
+
+/* Error Content */
+.rasa-error-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+/* Error Icon */
+.rasa-error-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* Error Details */
+.rasa-error-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.rasa-error-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+}
+
+.rasa-error-error .rasa-error-title {
+  color: #991b1b;
+}
+
+.rasa-error-warning .rasa-error-title {
+  color: #92400e;
+}
+
+.rasa-error-info .rasa-error-title {
+  color: #1e40af;
+}
+
+.rasa-error-text {
+  font-size: 14px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.rasa-error-error .rasa-error-text {
+  color: #dc2626;
+}
+
+.rasa-error-warning .rasa-error-text {
+  color: #d97706;
+}
+
+.rasa-error-info .rasa-error-text {
+  color: #2563eb;
+}
+
+/* Error Actions */
+.rasa-error-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+/* Retry Button */
+.rasa-error-retry-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rasa-error-error .rasa-error-retry-btn {
+  background-color: #ef4444;
+  color: white;
+}
+
+.rasa-error-error .rasa-error-retry-btn:hover {
+  background-color: #dc2626;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(239, 68, 68, 0.3);
+}
+
+.rasa-error-warning .rasa-error-retry-btn {
+  background-color: #f59e0b;
+  color: white;
+}
+
+.rasa-error-warning .rasa-error-retry-btn:hover {
+  background-color: #d97706;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(245, 158, 11, 0.3);
+}
+
+.rasa-error-info .rasa-error-retry-btn {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.rasa-error-info .rasa-error-retry-btn:hover {
+  background-color: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+}
+
+.rasa-error-retry-btn:active {
+  transform: translateY(0);
+}
+
+.rasa-retry-icon {
+  font-size: 16px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.rasa-error-retry-btn:hover .rasa-retry-icon {
+  transform: rotate(180deg);
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .rasa-error-container {
+    padding: 16px;
+  }
+
+  .rasa-error-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .rasa-error-icon {
+    font-size: 40px;
+  }
+
+  .rasa-error-actions {
+    justify-content: center;
+  }
+
+  .rasa-error-retry-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

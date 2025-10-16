@@ -1,0 +1,881 @@
+/* Page Container */
+.rasa-manage-doctors-page {
+  animation: rasa-fadeIn 0.5s ease-out;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+/* ========================================
+   HEADER SECTION
+   ======================================== */
+.rasa-page-header-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 16px;
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+}
+
+.rasa-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.rasa-header-title-group {
+  flex: 1;
+  min-width: 250px;
+}
+
+.rasa-page-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.5px;
+}
+
+.rasa-page-subtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  font-weight: 400;
+}
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+.rasa-btn-primary {
+  background: #ffffff;
+  color: #667eea;
+  border: none;
+  padding: 0.875rem 1.75rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.rasa-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.rasa-btn-primary:active {
+  transform: translateY(0);
+}
+
+.rasa-btn-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.rasa-btn-secondary {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+  padding: 0.625rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.rasa-btn-secondary:hover {
+  background: #e2e8f0;
+  border-color: #cbd5e1;
+}
+
+.rasa-btn-danger {
+  background: #fee2e2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+  padding: 0.625rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.rasa-btn-danger:hover {
+  background: #fecaca;
+  border-color: #fca5a5;
+}
+
+/* ========================================
+   SEARCH BAR
+   ======================================== */
+.rasa-search-container {
+  width: 100%;
+}
+
+.rasa-search-wrapper {
+  position: relative;
+  max-width: 500px;
+}
+
+.rasa-search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.125rem;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.rasa-search-input {
+  width: 100%;
+  padding: 0.875rem 3rem 0.875rem 3rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.95);
+  color: #334155;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.rasa-search-input::placeholder {
+  color: #94a3b8;
+}
+
+.rasa-search-input:focus {
+  background: #ffffff;
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.rasa-search-clear {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #64748b;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.rasa-search-clear:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: #334155;
+}
+
+/* ========================================
+   STATS BAR
+   ======================================== */
+.rasa-stats-bar {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.rasa-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rasa-stat-label {
+  font-size: 0.875rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.rasa-stat-value {
+  font-size: 1.5rem;
+  color: #1e293b;
+  font-weight: 700;
+}
+
+/* ========================================
+   DOCTORS GRID
+   ======================================== */
+.rasa-doctors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.rasa-doctor-card {
+  transition: all 0.3s ease;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.rasa-doctor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+  border-color: #cbd5e1;
+}
+
+
+.rasa-doctor-card-header {
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.rasa-doctor-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(102,126,234,0.3);
+  transition: transform 0.2s ease;
+}
+
+.rasa-doctor-card:hover .rasa-doctor-avatar {
+  transform: scale(1.1);
+}
+
+
+.rasa-doctor-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.rasa-doctor-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 0.375rem 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rasa-doctor-specialty {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-weight: 500;
+}
+
+.rasa-specialty-icon {
+  font-size: 1rem;
+}
+
+.rasa-doctor-card-body {
+  padding: 1.5rem;
+}
+
+.rasa-slots-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #f8fafc;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.rasa-slots-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rasa-slots-icon {
+  font-size: 1.125rem;
+}
+
+.rasa-slots-title {
+  font-size: 0.875rem;
+  color: #475569;
+  font-weight: 600;
+}
+
+.rasa-slots-count {
+  font-size: 1.25rem;
+  color: #667eea;
+  font-weight: 700;
+}
+
+.rasa-slots-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.rasa-slot-date-group {
+  background: #fafbfc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.75rem;
+}
+
+.rasa-slot-date {
+  font-size: 0.8125rem;
+  color: #475569;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.rasa-slot-times {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.rasa-slot-time-badge {
+  font-size: 0.75rem;
+  color: #ffffff;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  padding: 0.25rem 0.625rem;
+  border-radius: 12px;
+  font-weight: 600;
+  border: none;
+}
+
+
+.rasa-slot-more {
+  font-size: 0.75rem;
+  color: #64748b;
+  background: #f1f5f9;
+  padding: 0.25rem 0.625rem;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.rasa-slots-more-dates {
+  text-align: center;
+  font-size: 0.8125rem;
+  color: #667eea;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.rasa-doctor-card-footer {
+  padding: 1rem 1.5rem;
+  display: flex;
+  gap: 0.75rem;
+  border-top: 1px solid #e2e8f0;
+  background: #fafbfc;
+}
+
+.rasa-btn-edit, .rasa-btn-delete {
+  padding: 0.5rem;
+  border-radius: 50%;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rasa-btn-edit {
+  background: #e0e7ff;
+  color: #4338ca;
+}
+
+.rasa-btn-delete {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+
+/* ========================================
+   EMPTY STATE
+   ======================================== */
+.rasa-empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 2rem;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 2px dashed #cbd5e1;
+}
+
+.rasa-empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.rasa-empty-title {
+  font-size: 1.5rem;
+  color: #334155;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+
+.rasa-empty-message {
+  font-size: 1rem;
+  color: #64748b;
+  margin: 0;
+}
+
+/* ========================================
+   FORM STYLES
+   ======================================== */
+.rasa-doctor-form {
+  padding: 0.5rem 0;
+}
+
+.rasa-form-section {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.rasa-form-section:last-of-type {
+  border-bottom: none;
+  margin-bottom: 1.5rem;
+}
+
+.rasa-form-section-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 1.25rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rasa-form-group {
+  margin-bottom: 1.25rem;
+}
+
+.rasa-form-group-inline {
+  margin-bottom: 0;
+  flex: 1;
+}
+
+.rasa-form-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 0.5rem;
+}
+
+.rasa-form-label-small {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 0.375rem;
+}
+
+.rasa-label-icon {
+  font-size: 1.125rem;
+}
+
+.rasa-form-input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  color: #1e293b;
+  transition: all 0.2s ease;
+  outline: none;
+  background: #ffffff;
+}
+
+.rasa-form-input:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.rasa-form-input::placeholder {
+  color: #94a3b8;
+}
+
+.rasa-form-input-date {
+  padding: 0.75rem 1rem;
+}
+
+.rasa-form-select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  color: #1e293b;
+  transition: all 0.2s ease;
+  outline: none;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.rasa-form-select:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* ========================================
+   SLOT INPUT SECTION
+   ======================================== */
+.rasa-slot-input-container {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 1.25rem;
+  border: 1px solid #e2e8f0;
+}
+
+.rasa-slot-input-group {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.rasa-btn-add-slot {
+  background: #667eea;
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  white-space: nowrap;
+  height: fit-content;
+}
+
+.rasa-btn-add-slot:hover {
+  background: #5568d3;
+  transform: translateY(-1px);
+}
+
+.rasa-btn-add-slot:active {
+  transform: translateY(0);
+}
+
+/* ========================================
+   SLOTS LIST
+   ======================================== */
+.rasa-slots-list {
+  margin-top: 1.5rem;
+}
+
+.rasa-slots-list-header {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 0.75rem;
+  padding: 0 0.25rem;
+}
+
+.rasa-slot-date-card {
+  background: #f3f4f6;
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  transition: all 0.2s ease;
+}
+
+.rasa-slot-date-card:hover {
+  background: #e0e7ff;
+  box-shadow: 0 2px 8px rgba(102,126,234,0.2);
+}
+
+
+.rasa-slot-date-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.rasa-slot-date-icon {
+  font-size: 1.125rem;
+}
+
+.rasa-slot-date-text {
+  flex: 1;
+}
+
+.rasa-slot-times-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.rasa-slot-time-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.rasa-slot-time-item:hover {
+  background: #f1f5f9;
+}
+
+.rasa-slot-time-icon {
+  font-size: 1rem;
+  color: #667eea;
+}
+
+.rasa-slot-time-text {
+  flex: 1;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.rasa-slot-remove-btn {
+  background: #fee2e2;
+  color: #dc2626;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.rasa-slot-remove-btn:hover {
+  background: #fecaca;
+  transform: scale(1.1);
+}
+
+.rasa-slot-remove-btn:active {
+  transform: scale(0.95);
+}
+
+/* ========================================
+   FORM ACTIONS
+   ======================================== */
+.rasa-form-actions {
+  display: flex;
+  gap: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+  margin-top: 1.5rem;
+}
+
+.rasa-btn-cancel {
+  flex: 1;
+  padding: 0.875rem 1.5rem;
+  border: 2px solid #e2e8f0;
+  background: #ffffff;
+  color: #475569;
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.rasa-btn-cancel:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.rasa-btn-cancel:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.rasa-btn-submit {
+  flex: 1;
+  padding: 0.875rem 1.5rem;
+  border: none;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff;
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.rasa-btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+}
+
+.rasa-btn-submit:active {
+  transform: translateY(0);
+}
+
+.rasa-btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+@media (max-width: 768px) {
+  .rasa-manage-doctors-page {
+    padding: 1rem;
+  }
+
+  .rasa-page-header-section {
+    padding: 1.5rem;
+  }
+
+  .rasa-page-title {
+    font-size: 1.75rem;
+  }
+
+  .rasa-header-content {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .rasa-btn-primary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .rasa-doctors-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rasa-slot-input-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .rasa-form-group-inline {
+    width: 100%;
+  }
+
+  .rasa-btn-add-slot {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .rasa-form-actions {
+    flex-direction: column;
+  }
+
+  .rasa-doctor-card-footer {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .rasa-page-title {
+    font-size: 1.5rem;
+  }
+
+  .rasa-page-subtitle {
+    font-size: 0.875rem;
+  }
+
+  .rasa-doctor-card-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .rasa-doctor-avatar {
+    width: 56px;
+    height: 56px;
+    font-size: 1.5rem;
+  }
+}
+
+.rasa-btn-edit, .rasa-btn-delete {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.rasa-btn-edit {
+  background: #667eea;
+  color: #ffffff;
+  border: 2px solid #667eea;
+}
+
+.rasa-btn-edit:hover {
+  background: #5568d3;
+  border-color: #5568d3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.rasa-btn-delete {
+  background: #ffffff;
+  color: #dc2626;
+  border: 2px solid #dc2626;
+}
+
+.rasa-btn-delete:hover {
+  background: #dc2626;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+}

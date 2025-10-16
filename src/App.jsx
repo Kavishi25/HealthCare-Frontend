@@ -5,6 +5,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import Doctors from "./pages/Doctors";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Payment from "./pages/Payment";
 import "./styles/App.css";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/doctors" element={<Doctors />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/payment" element={<Payment />} />
         </Routes>
       </div>
     </Router>

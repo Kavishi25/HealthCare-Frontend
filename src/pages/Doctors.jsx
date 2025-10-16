@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import "../styles/Doctors.css";
 
@@ -104,6 +105,12 @@ const Doctors = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="payment-section">
+          <Link to="/payment" className="payment-btn">
+            Make a Payment
+          </Link>
         </div>
       </main>
     </div>

@@ -15,6 +15,7 @@ import ManageDoctors from "./pages/admin/ManageDoctors";
 import BookAppointmentPage from "./pages/BookAppointmentPage";
 import MyAppointmentsPage from "./pages/MyAppointmentsPage";
 
+import Payment from "./pages/Payment";
 import "./styles/App.css";
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
           <Route path="/admin/appointments" element={<AdminAppointments />} />
           <Route path="/admin/profile" element={<AdminProfile />} />
           <Route path="/admin/manage-doctors" element={<ManageDoctors />} />
+          <Route path="/payment" element={<Payment />} />
         </Routes>
       </div>
     </Router>

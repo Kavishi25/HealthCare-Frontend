@@ -10,7 +10,7 @@ const AdminLayout = ({ children }) => {
     {
       icon: "📊",
       label: "Dashboard",
-      path: "/admin-dashboard",
+      path: "/admin/dashboard",
     },
     {
       icon: "📅",
@@ -18,14 +18,14 @@ const AdminLayout = ({ children }) => {
       path: "/admin/appointments",
     },
     {
-      icon: "👨‍⚕️",
-      label: "Manage Doctors",
-      path: "/admin/manage-doctors",
+      icon: "📈",
+      label: "System Reports",
+      path: "/admin/reports",
     },
     {
-      icon: "👤",
-      label: "Profile",
-      path: "/admin/profile",
+      icon: "🧑‍⚕️",
+      label: "Patient Reports",
+      path: "/admin/patient-reports",
     },
   ];
 

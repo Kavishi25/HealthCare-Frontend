@@ -82,6 +82,13 @@ const Doctors = () => {
             <p>No doctors available at the moment.</p>
           </div>
         )}
+
+        <div className="payment-section">
+          <Link to="/payment" className="payment-btn">
+            Make a Payment
+          </Link>
+        </div>
+        
       </main>
     </div>
   );

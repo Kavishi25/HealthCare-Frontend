@@ -55,6 +55,14 @@ const DoctorCard = ({ doctor, onSelect, isSelected }) => {
           <span className="rasa-specialty-badge">{doctor.specialty}</span>
         </p>
         
+        {/* Charge Information */}
+        <div className="rasa-doctor-charge">
+          <span className="rasa-charge-icon">💵</span>
+          <span className="rasa-charge-text">
+            LKR {doctor.chargePerSlot || 0} per slot
+          </span>
+        </div>
+        
         {/* Availability Information */}
         {availableDatesCount > 0 ? (
           <div className="rasa-doctor-availability">

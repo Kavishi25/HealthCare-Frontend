@@ -1,0 +1,555 @@
+/* Payments Page Styles */
+.kara-payments-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+  padding: 2rem 0;
+}
+
+.kara-payments-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Page Header */
+.kara-payments-header {
+  margin-bottom: 2.5rem;
+}
+
+.kara-back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: white;
+  border: 1px solid #e5e7eb;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 1.5rem;
+}
+
+.kara-back-button:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+  transform: translateX(-4px);
+}
+
+.kara-header-content {
+  text-align: center;
+}
+
+.kara-header-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.kara-payments-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #1f2937;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #1f2937 0%, #4b5563 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.kara-payments-subtitle {
+  font-size: 1.125rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Statistics Section */
+.kara-stats-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.kara-stat-card {
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.kara-stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.kara-stat-card.kara-stat-total {
+  border-color: #10b981;
+}
+
+.kara-stat-card.kara-stat-completed {
+  border-color: #3b82f6;
+}
+
+.kara-stat-card.kara-stat-pending {
+  border-color: #f59e0b;
+}
+
+.kara-stat-card.kara-stat-all {
+  border-color: #8b5cf6;
+}
+
+.kara-stat-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  flex-shrink: 0;
+}
+
+.kara-stat-total .kara-stat-icon-wrapper {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.kara-stat-completed .kara-stat-icon-wrapper {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+}
+
+.kara-stat-pending .kara-stat-icon-wrapper {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+.kara-stat-all .kara-stat-icon-wrapper {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+}
+
+.kara-stat-content {
+  flex: 1;
+}
+
+.kara-stat-label {
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.kara-stat-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+/* Controls Section */
+.kara-controls-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  background: white;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.kara-filters {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.kara-filter-btn {
+  padding: 0.5rem 1.25rem;
+  border: 2px solid #e5e7eb;
+  background: white;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.875rem;
+}
+
+.kara-filter-btn:hover {
+  border-color: #667eea;
+  color: #667eea;
+}
+
+.kara-filter-btn.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: #667eea;
+  color: white;
+}
+
+.kara-sort-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.kara-sort-select {
+  padding: 0.5rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  color: #374151;
+  cursor: pointer;
+  background: white;
+  transition: all 0.2s ease;
+}
+
+.kara-sort-select:hover {
+  border-color: #667eea;
+}
+
+.kara-sort-order-btn {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #e5e7eb;
+  background: white;
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #374151;
+}
+
+.kara-sort-order-btn:hover {
+  border-color: #667eea;
+  color: #667eea;
+}
+
+/* Table Container */
+.kara-table-container {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.kara-table-wrapper {
+  overflow-x: auto;
+}
+
+.kara-payments-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.kara-payments-table thead {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.kara-payments-table th {
+  padding: 1rem 1.5rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.kara-payments-table tbody tr {
+  border-bottom: 1px solid #f3f4f6;
+  transition: all 0.2s ease;
+}
+
+.kara-payments-table tbody tr:hover {
+  background: #f9fafb;
+  transform: scale(1.01);
+}
+
+.kara-payments-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.kara-payments-table td {
+  padding: 1.25rem 1.5rem;
+  color: #374151;
+  font-size: 0.9375rem;
+}
+
+/* Table Cell Styles */
+.kara-transaction-id {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.kara-id-icon {
+  font-size: 1.25rem;
+}
+
+.kara-id-text {
+  font-weight: 600;
+  color: #1f2937;
+  font-family: monospace;
+}
+
+.kara-payment-type {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.kara-type-icon {
+  font-size: 1.25rem;
+}
+
+.kara-type-text {
+  font-weight: 600;
+  color: #4b5563;
+}
+
+.kara-payment-method {
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.kara-amount {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.kara-currency {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  font-weight: 600;
+}
+
+.kara-amount-value {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #10b981;
+}
+
+/* Status Badges */
+.kara-status-badge {
+  display: inline-block;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.status-completed {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+}
+
+.status-pending {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: white;
+}
+
+.status-processing {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+}
+
+.status-failed {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+}
+
+.status-cancelled {
+  background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+  color: white;
+}
+
+.status-refunded {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  color: white;
+}
+
+.kara-date {
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.kara-view-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.kara-view-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* Loading and Error States */
+.kara-loading-wrapper,
+.kara-error-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Empty State */
+.kara-empty-state {
+  background: white;
+  border-radius: 1rem;
+  padding: 4rem 2rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.kara-empty-icon {
+  font-size: 5rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.5;
+}
+
+.kara-empty-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 1rem 0;
+}
+
+.kara-empty-text {
+  font-size: 1.125rem;
+  color: #6b7280;
+  margin: 0 0 2rem 0;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.kara-empty-action-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+  border: none;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.kara-empty-action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .kara-payments-title {
+    font-size: 2.5rem;
+  }
+
+  .kara-stats-section {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .kara-table-wrapper {
+    overflow-x: scroll;
+  }
+}
+
+@media (max-width: 768px) {
+  .kara-payments-page {
+    padding: 1rem 0;
+  }
+
+  .kara-payments-container {
+    padding: 0 1rem;
+  }
+
+  .kara-payments-title {
+    font-size: 2rem;
+  }
+
+  .kara-payments-subtitle {
+    font-size: 1rem;
+  }
+
+  .kara-stats-section {
+    grid-template-columns: 1fr;
+  }
+
+  .kara-controls-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .kara-filters {
+    justify-content: center;
+  }
+
+  .kara-sort-controls {
+    justify-content: space-between;
+  }
+
+  .kara-payments-table th,
+  .kara-payments-table td {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .kara-stat-icon-wrapper {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+
+  .kara-stat-value {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .kara-payments-title {
+    font-size: 1.75rem;
+  }
+
+  .kara-empty-icon {
+    font-size: 4rem;
+  }
+
+  .kara-empty-title {
+    font-size: 1.5rem;
+  }
+
+  .kara-empty-text {
+    font-size: 1rem;
+  }
+}
+

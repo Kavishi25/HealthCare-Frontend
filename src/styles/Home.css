@@ -443,29 +443,54 @@
 
 .cta-content p {
   font-size: 1.125rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   opacity: 0.9;
   line-height: 1.6;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .cta-button {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: white;
-  color: #1f2937;
   padding: 1.25rem 2.5rem;
   border-radius: 0.75rem;
   text-decoration: none;
   font-weight: 700;
   font-size: 1.125rem;
   transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.cta-button.primary {
+  background: white;
+  color: #1f2937;
   box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
 }
 
-.cta-button:hover {
+.cta-button.primary:hover {
   transform: translateY(-3px);
   box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
+}
+
+.cta-button.secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button.secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
 }
 
 /* Responsive Design */
@@ -571,6 +596,11 @@
   
   .speciality-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    width: 100%;
   }
   
   .cta-button {

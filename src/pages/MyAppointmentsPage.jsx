@@ -67,6 +67,11 @@ const MyAppointmentsPage = () => {
   return (
     <div className="rasa-my-appointments-page">
       <div className="rasa-appointments-container">
+        {/* Back Button */}
+        <button className="rasa-back-button" onClick={() => navigate(-1)}>
+          ← Back
+        </button>
+
         {/* Page Header with Floating Effect */}
         <div className="rasa-appointments-header">
           <div className="rasa-header-content">
@@ -85,6 +90,13 @@ const MyAppointmentsPage = () => {
             >
               <span className="rasa-refresh-icon">🔄</span>
               <span className="rasa-btn-text">Refresh</span>
+            </button>
+            <button 
+              className="rasa-view-payments-btn" 
+              onClick={() => navigate('/payments')}
+            >
+              <span className="rasa-payment-icon">💳</span>
+              <span className="rasa-btn-text">View Payments</span>
             </button>
             <button 
               className="rasa-book-new-btn" 

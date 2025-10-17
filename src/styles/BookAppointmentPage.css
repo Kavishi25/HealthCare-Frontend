@@ -1,324 +1,56 @@
-/* Page Container & Layout */
+/* ============================================
+   Book Appointment Page - Professional Styles
+   ============================================ */
+
+/* Root Variables */
+:root {
+  --primary-color: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-light: #dbeafe;
+  --success-color: #10b981;
+  --success-light: #d1fae5;
+  --error-color: #ef4444;
+  --error-light: #fee2e2;
+  --warning-color: #f59e0b;
+  --warning-light: #fef3c7;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --text-tertiary: #9ca3af;
+  --border-color: #e5e7eb;
+  --background-light: #f9fafb;
+  --background-white: #ffffff;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   Page Container
+   ============================================ */
 .rasa-book-appointment-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
   padding: 2rem 1rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
 }
 
 .rasa-page-container {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
+  animation: fadeInUp 0.5s ease-out;
 }
 
-/* ============================================
-   PAGE HEADER
-   ============================================ */
-.rasa-page-header {
-  text-align: center;
-  margin-bottom: 3rem;
-  animation: rasa-fadeInDown 0.6s ease-out;
-}
-
-.rasa-page-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: white;
-  margin-bottom: 0.5rem;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  letter-spacing: -0.5px;
-}
-
-.rasa-page-subtitle {
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 2rem;
-  font-weight: 400;
-}
-
-/* ============================================
-   BREADCRUMB NAVIGATION
-   ============================================ */
-.rasa-breadcrumb {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  padding: 1.5rem 2rem;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 50px;
-  max-width: 600px;
-  margin: 0 auto;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.rasa-breadcrumb-item {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.6);
-  font-weight: 500;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-}
-
-.rasa-breadcrumb-item.rasa-breadcrumb-active {
-  color: white;
-  font-weight: 600;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.rasa-breadcrumb-separator {
-  color: rgba(255, 255, 255, 0.4);
-  font-size: 1.2rem;
-}
-
-/* ============================================
-   SEARCH WRAPPER
-   ============================================ */
-.rasa-search-wrapper {
-  margin-bottom: 2rem;
-  animation: rasa-fadeIn 0.6s ease-out 0.2s both;
-}
-
-/* ============================================
-   LOADING & ERROR STATES
-   ============================================ */
-.rasa-loading-wrapper {
-  background: white;
-  border-radius: 15px;
-  padding: 3rem;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  animation: rasa-fadeIn 0.5s ease-out;
-}
-
-.rasa-error-wrapper {
-  background: white;
-  border-radius: 15px;
-  padding: 2rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  animation: rasa-fadeIn 0.5s ease-out;
-}
-
-/* ============================================
-   NO RESULTS STATE
-   ============================================ */
-.rasa-no-results {
-  text-align: center;
-  padding: 4rem 2rem;
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  animation: rasa-fadeIn 0.5s ease-out;
-}
-
-.rasa-no-results-icon {
-  font-size: 4rem;
-  margin-bottom: 1.5rem;
-  animation: rasa-pulse 2s ease-in-out infinite;
-}
-
-.rasa-no-results-text {
-  font-size: 1.25rem;
-  color: #333;
-  margin-bottom: 0.75rem;
-  font-weight: 600;
-}
-
-.rasa-no-results-hint {
-  color: #666;
-  font-size: 1rem;
-}
-
-/* ============================================
-   DOCTORS SECTION
-   ============================================ */
-.rasa-doctors-section {
-  margin-bottom: 2rem;
-  animation: rasa-fadeIn 0.6s ease-out 0.3s both;
-}
-
-.rasa-section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.rasa-section-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: white;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.rasa-count-badge {
-  background: rgba(255, 255, 255, 0.2);
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.rasa-change-doctor-btn {
-  padding: 0.7rem 1.5rem;
-  background: rgba(255, 255, 255, 0.2);
-  border: 2px solid white;
-  border-radius: 10px;
-  color: white;
-  font-weight: 600;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-}
-
-.rasa-change-doctor-btn:hover {
-  background: white;
-  color: #667eea;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.rasa-change-doctor-btn:active {
-  transform: translateY(0);
-}
-
-/* ============================================
-   DOCTORS LIST
-   ============================================ */
-.rasa-doctors-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
-}
-
-/* ============================================
-   TIMESLOT SECTION
-   ============================================ */
-.rasa-timeslot-section {
-  animation: rasa-slideUp 0.5s ease-out;
-}
-
-/* ============================================
-   BOOKING ERROR
-   ============================================ */
-.rasa-booking-error {
-  margin-bottom: 2rem;
-  animation: rasa-shake 0.5s ease-out;
-}
-
-/* ============================================
-   PROCEED SECTION
-   ============================================ */
-.rasa-proceed-section {
-  background: white;
-  border-radius: 15px;
-  padding: 2rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  animation: rasa-slideUp 0.5s ease-out;
-  margin-top: 2rem;
-}
-
-.rasa-proceed-summary {
-  margin-bottom: 1.5rem;
-}
-
-.rasa-summary-title {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 1rem;
-}
-
-.rasa-summary-details {
-  background: linear-gradient(135deg, #f8f9ff 0%, #f0f2ff 100%);
-  padding: 1.5rem;
-  border-radius: 12px;
-  border-left: 4px solid #667eea;
-  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
-}
-
-.rasa-summary-details p {
-  margin-bottom: 0.75rem;
-  color: #333;
-  line-height: 1.8;
-  font-size: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.rasa-summary-details p:last-child {
-  margin-bottom: 0;
-}
-
-.rasa-summary-details strong {
-  color: #667eea;
-  font-weight: 600;
-  min-width: 100px;
-}
-
-.rasa-proceed-btn {
-  width: 100%;
-  padding: 1.2rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
-  border-radius: 12px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
-}
-
-.rasa-proceed-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-}
-
-.rasa-proceed-btn:active {
-  transform: translateY(-1px);
-}
-
-.rasa-proceed-icon {
-  font-size: 1.3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-}
-
-/* ============================================
-   ANIMATIONS
-   ============================================ */
-@keyframes rasa-fadeIn {
+@keyframes fadeInUp {
   from {
     opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes rasa-fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -326,7 +58,306 @@
   }
 }
 
-@keyframes rasa-slideUp {
+/* ============================================
+   Page Header
+   ============================================ */
+.rasa-page-header {
+  background: var(--background-white);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
+}
+
+.rasa-back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  margin-bottom: 1.5rem;
+}
+
+.rasa-back-button:hover {
+  background: var(--background-light);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  transform: translateX(-2px);
+}
+
+.rasa-header-content {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.rasa-page-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 0.5rem 0;
+  background: linear-gradient(135deg, var(--primary-color), #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.rasa-page-subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin: 0;
+  font-weight: 400;
+}
+
+/* ============================================
+   Progress Steps
+   ============================================ */
+.rasa-progress-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 2rem 1rem 0;
+}
+
+.rasa-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.rasa-step-number {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--background-light);
+  border: 2px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: var(--text-tertiary);
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+.rasa-step-active .rasa-step-number {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+  box-shadow: 0 0 0 4px var(--primary-light);
+  transform: scale(1.1);
+}
+
+.rasa-step-check {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  background: var(--success-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-md);
+}
+
+.rasa-step-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-tertiary);
+  text-align: center;
+  white-space: nowrap;
+  transition: color var(--transition-base);
+}
+
+.rasa-step-active .rasa-step-label {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.rasa-step-connector {
+  width: 6rem;
+  height: 2px;
+  background: var(--border-color);
+  position: relative;
+  top: -1.25rem;
+}
+
+/* ============================================
+   Search Section
+   ============================================ */
+.rasa-search-wrapper {
+  background: var(--background-white);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
+}
+
+/* ============================================
+   Loading & Error States
+   ============================================ */
+.rasa-loading-wrapper,
+.rasa-error-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1rem;
+  background: var(--background-white);
+  border-radius: var(--radius-xl);
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-md);
+}
+
+/* ============================================
+   No Results State
+   ============================================ */
+.rasa-no-results {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--background-white);
+  border-radius: var(--radius-xl);
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-md);
+  border: 2px dashed var(--border-color);
+}
+
+.rasa-no-results-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.rasa-no-results-text {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 0.5rem 0;
+}
+
+.rasa-no-results-hint {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ============================================
+   Doctors Section
+   ============================================ */
+.rasa-doctors-section {
+  margin-bottom: 2rem;
+}
+
+.rasa-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding: 0 0.5rem;
+}
+
+.rasa-section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rasa-count-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.75rem;
+  background: var(--primary-light);
+  color: var(--primary-color);
+  border-radius: var(--radius-lg);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.rasa-change-doctor-btn {
+  padding: 0.625rem 1.25rem;
+  background: transparent;
+  border: 1px solid var(--primary-color);
+  border-radius: var(--radius-md);
+  color: var(--primary-color);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.rasa-change-doctor-btn:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.rasa-doctors-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ============================================
+   Time Slot Section
+   ============================================ */
+.rasa-timeslot-section {
+  background: var(--background-white);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
+  scroll-margin-top: 2rem;
+}
+
+.rasa-timeslot-container {
+  scroll-margin-top: 2rem;
+}
+
+/* ============================================
+   Booking Error
+   ============================================ */
+.rasa-booking-error {
+  margin-bottom: 2rem;
+}
+
+/* ============================================
+   Proceed Section
+   ============================================ */
+.rasa-proceed-section {
+  background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  box-shadow: var(--shadow-lg);
+  border: 2px solid var(--primary-light);
+  animation: slideInUp 0.4s ease-out;
+  margin-bottom: 2rem;
+}
+
+@keyframes slideInUp {
   from {
     opacity: 0;
     transform: translateY(30px);
@@ -337,67 +368,150 @@
   }
 }
 
-@keyframes rasa-pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
+.rasa-proceed-summary {
+  background: var(--background-white);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border-color);
 }
 
-@keyframes rasa-shake {
-  0%, 100% {
-    transform: translateX(0);
-  }
-  10%, 30%, 50%, 70%, 90% {
-    transform: translateX(-5px);
-  }
-  20%, 40%, 60%, 80% {
-    transform: translateX(5px);
-  }
+.rasa-summary-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 1rem 0;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.rasa-summary-details {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.rasa-summary-details p {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+.rasa-summary-details p strong {
+  color: var(--text-primary);
+  font-weight: 600;
+  min-width: 140px;
+}
+
+.rasa-summary-details p:last-child {
+  padding-top: 1rem;
+  margin-top: 0.5rem;
+  border-top: 2px solid var(--border-color);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.rasa-proceed-btn {
+  width: 100%;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, var(--primary-color), #06b6d4);
+  border: none;
+  border-radius: var(--radius-lg);
+  color: white;
+  font-size: 1.125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.rasa-proceed-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+}
+
+.rasa-proceed-btn:active {
+  transform: translateY(0);
+}
+
+.rasa-proceed-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  font-size: 1rem;
 }
 
 /* ============================================
-   RESPONSIVE DESIGN
+   Responsive Design
    ============================================ */
 @media (max-width: 768px) {
   .rasa-book-appointment-page {
-    padding: 1.5rem 1rem;
+    padding: 1rem 0.5rem;
+  }
+
+  .rasa-page-header {
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
   }
 
   .rasa-page-title {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
 
   .rasa-page-subtitle {
+    font-size: 0.875rem;
+  }
+
+  .rasa-progress-steps {
+    padding: 1.5rem 0 0;
+  }
+
+  .rasa-step-number {
+    width: 2.5rem;
+    height: 2.5rem;
     font-size: 1rem;
   }
 
-  .rasa-breadcrumb {
-    font-size: 0.85rem;
-    padding: 1rem 1.5rem;
-    gap: 0.5rem;
+  .rasa-step-label {
+    font-size: 0.75rem;
   }
 
-  .rasa-breadcrumb-item {
-    font-size: 0.8rem;
+  .rasa-step-connector {
+    width: 3rem;
+  }
+
+  .rasa-search-wrapper,
+  .rasa-timeslot-section,
+  .rasa-proceed-section {
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .rasa-section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .rasa-section-title {
+    font-size: 1.25rem;
   }
 
   .rasa-doctors-list {
     grid-template-columns: 1fr;
-  }
-
-  .rasa-section-title {
-    font-size: 1.3rem;
-  }
-
-  .rasa-proceed-section {
-    padding: 1.5rem;
-  }
-
-  .rasa-summary-details {
-    padding: 1.25rem;
+    gap: 1rem;
   }
 
   .rasa-summary-details p {
@@ -406,55 +520,68 @@
     gap: 0.25rem;
   }
 
+  .rasa-summary-details p strong {
+    min-width: auto;
+  }
+
   .rasa-proceed-btn {
     font-size: 1rem;
-    padding: 1rem;
-  }
-
-  .rasa-no-results {
-    padding: 3rem 1.5rem;
-  }
-
-  .rasa-no-results-icon {
-    font-size: 3rem;
+    padding: 0.875rem 1.5rem;
   }
 }
 
 @media (max-width: 480px) {
   .rasa-page-title {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
   }
 
-  .rasa-breadcrumb {
-    padding: 0.75rem 1rem;
+  .rasa-step-label {
+    display: none;
   }
 
-  .rasa-change-doctor-btn {
-    width: 100%;
-    text-align: center;
-  }
-
-  .rasa-section-header {
-    flex-direction: column;
-    align-items: stretch;
+  .rasa-step-connector {
+    width: 2rem;
   }
 }
 
 /* ============================================
-   PRINT STYLES
+   Accessibility
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   Print Styles
    ============================================ */
 @media print {
+  .rasa-back-button,
+  .rasa-change-doctor-btn,
+  .rasa-proceed-btn {
+    display: none;
+  }
+
   .rasa-book-appointment-page {
     background: white;
   }
 
   .rasa-page-header,
-  .rasa-breadcrumb {
-    color: black;
-  }
-
-  .rasa-change-doctor-btn,
-  .rasa-proceed-btn {
-    display: none;
+  .rasa-search-wrapper,
+  .rasa-doctors-section,
+  .rasa-timeslot-section,
+  .rasa-proceed-section {
+    box-shadow: none;
+    border: 1px solid var(--border-color);
+    page-break-inside: avoid;
   }
 }

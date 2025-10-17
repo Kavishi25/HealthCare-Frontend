@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { jsPDF } from "jspdf";
 import "../styles/Payment.css";
 import AddCardModal from "../components/AddCardModal";
 import Card from "../components/Card";
@@ -6,6 +8,8 @@ import CardService from "../services/cardService";
 import PaymentService from "../services/paymentService";
 
 const Payment = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("card");
   const [selectedCard, setSelectedCard] = useState(null);
   const [savedCards, setSavedCards] = useState([]);
@@ -25,6 +29,15 @@ const Payment = () => {
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
   const [paymentResult, setPaymentResult] = useState(null);
   const [showPaymentConfirmation, setShowPaymentConfirmation] = useState(false);
+
+  // Get appointment data from navigation state
+  const appointmentData = location.state || {
+    appointmentId: '64a1b2c3d4e5f67890123456',
+    doctor: { name: 'Sarah Johnson', specialty: 'Cardiologist' },
+    date: new Date().toISOString(),
+    slot: '10:00 AM',
+    amount: 0
+  };
 
   // Load cards on component mount
   useEffect(() => {
@@ -151,11 +164,15 @@ const Payment = () => {
     try {
       const selectedCardData = savedCards.find(card => card.id === selectedCard);
       
+      // Get user ID from localStorage
+      const userId = localStorage.getItem('userId') || localStorage.getItem('patientId');
+      
       const paymentData = {
+        userId: userId,
         paymentType: 'card',
-        amount: parseFloat(appointmentDetails.total.replace(/[,$]/g, '')) || 120.00, // Parse amount from appointment details
-        currency: 'USD',
-        appointmentId: '64a1b2c3d4e5f67890123456', // Dummy appointment ID
+        amount: parseFloat(appointmentData.amount) || 0,
+        currency: 'LKR',
+        appointmentId: appointmentData.appointmentId,
         cardId: selectedCard,
         metadata: {
           ipAddress: '192.168.1.1',
@@ -180,7 +197,10 @@ const Payment = () => {
       
     } catch (error) {
       console.error('❌ Card payment failed:', error);
-      alert(`Payment failed: ${error.message}`);
+      const errorMessage = error.errors && error.errors.length > 0
+        ? `Payment validation failed:\n${error.errors.join('\n')}`
+        : `Payment failed: ${error.message}`;
+      alert(errorMessage);
     } finally {
       setIsProcessingPayment(false);
     }
@@ -190,11 +210,15 @@ const Payment = () => {
   const handleInsurancePayment = async () => {
     setIsProcessingPayment(true);
     try {
+      // Get user ID from localStorage
+      const userId = localStorage.getItem('userId') || localStorage.getItem('patientId');
+      
       const paymentData = {
+        userId: userId,
         paymentType: 'insurance',
-        amount: parseFloat(appointmentDetails.total.replace(/[,$]/g, '')) || 120.00,
-        currency: 'USD',
-        appointmentId: '64a1b2c3d4e5f67890123456', // Dummy appointment ID
+        amount: parseFloat(appointmentData.amount) || 0,
+        currency: 'LKR',
+        appointmentId: appointmentData.appointmentId,
         insuranceDetails: {
           provider: 'Blue Cross Blue Shield',
           policyNumber: 'BC123456789',
@@ -225,7 +249,10 @@ const Payment = () => {
       
     } catch (error) {
       console.error('❌ Insurance payment failed:', error);
-      alert(`Payment failed: ${error.message}`);
+      const errorMessage = error.errors && error.errors.length > 0
+        ? `Payment validation failed:\n${error.errors.join('\n')}`
+        : `Payment failed: ${error.message}`;
+      alert(errorMessage);
     } finally {
       setIsProcessingPayment(false);
     }
@@ -235,11 +262,15 @@ const Payment = () => {
   const handleCashPayment = async () => {
     setIsProcessingPayment(true);
     try {
+      // Get user ID from localStorage
+      const userId = localStorage.getItem('userId') || localStorage.getItem('patientId');
+      
       const paymentData = {
+        userId: userId,
         paymentType: 'cash',
-        amount: parseFloat(appointmentDetails.total.replace(/[,$]/g, '')) || 120.00,
-        currency: 'USD',
-        appointmentId: '64a1b2c3d4e5f67890123456', // Dummy appointment ID
+        amount: parseFloat(appointmentData.amount) || 0,
+        currency: 'LKR',
+        appointmentId: appointmentData.appointmentId,
         cashDetails: {
           paymentLocation: 'Ground Floor, Main Building, Payment Counter #1',
           paymentInstructions: 'Please arrive 15 minutes before your appointment time for payment processing'
@@ -267,7 +298,10 @@ const Payment = () => {
       
     } catch (error) {
       console.error('❌ Cash payment failed:', error);
-      alert(`Payment failed: ${error.message}`);
+      const errorMessage = error.errors && error.errors.length > 0
+        ? `Payment validation failed:\n${error.errors.join('\n')}`
+        : `Payment failed: ${error.message}`;
+      alert(errorMessage);
     } finally {
       setIsProcessingPayment(false);
     }
@@ -279,34 +313,142 @@ const Payment = () => {
     downloadReceipt(paymentResult);
   };
 
-  // Download receipt function
+  // Download receipt function as PDF
   const downloadReceipt = (paymentData) => {
-    // Create receipt content with only payment information
-    const receiptContent = `
-HEALTHCARE PAYMENT RECEIPT
-========================
-
-Transaction ID: ${paymentData.transactionId}
-Payment Date: ${new Date(paymentData.createdAt).toLocaleString()}
-Payment Type: ${paymentData.paymentType.toUpperCase()}
-Amount: $${paymentData.amount.toFixed(2)} ${paymentData.currency}
-Status: ${paymentData.status.toUpperCase()}
-${paymentData.paymentMethodSummary ? `Payment Method: ${paymentData.paymentMethodSummary}` : ''}
-
-========================
-Thank you for your payment!
-    `.trim();
-
-    // Create and download the file
-    const blob = new Blob([receiptContent], { type: 'text/plain' });
-    const url = window.URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `payment-receipt-${paymentData.transactionId}.txt`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    window.URL.revokeObjectURL(url);
+    const doc = new jsPDF();
+    
+    // Set colors
+    const primaryColor = [102, 126, 234]; // #667eea
+    const darkColor = [31, 41, 55]; // #1f2937
+    const lightGray = [107, 114, 128]; // #6b7280
+    
+    // Header with gradient-like effect (using rectangles)
+    doc.setFillColor(primaryColor[0], primaryColor[1], primaryColor[2]);
+    doc.rect(0, 0, 210, 40, 'F');
+    
+    // Title
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(24);
+    doc.setFont(undefined, 'bold');
+    doc.text('PAYMENT RECEIPT', 105, 20, { align: 'center' });
+    
+    doc.setFontSize(12);
+    doc.setFont(undefined, 'normal');
+    doc.text('Healthcare Appointment Payment', 105, 30, { align: 'center' });
+    
+    // Reset text color for body
+    doc.setTextColor(darkColor[0], darkColor[1], darkColor[2]);
+    
+    // Transaction Info Section
+    let yPosition = 55;
+    
+    // Transaction ID (highlighted)
+    doc.setFillColor(240, 245, 255); // Light blue background
+    doc.rect(15, yPosition - 5, 180, 12, 'F');
+    doc.setFontSize(11);
+    doc.setFont(undefined, 'bold');
+    doc.text('Transaction ID:', 20, yPosition);
+    doc.setFont(undefined, 'normal');
+    doc.text(paymentData.transactionId, 60, yPosition);
+    
+    yPosition += 20;
+    
+    // Payment Details
+    doc.setFontSize(14);
+    doc.setFont(undefined, 'bold');
+    doc.text('Payment Details', 20, yPosition);
+    
+    yPosition += 10;
+    doc.setDrawColor(200, 200, 200);
+    doc.line(20, yPosition, 190, yPosition);
+    
+    yPosition += 10;
+    
+    // Details rows
+    const details = [
+      { label: 'Payment Date:', value: new Date(paymentData.createdAt).toLocaleString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      })},
+      { label: 'Payment Type:', value: paymentData.paymentType.toUpperCase() },
+      { label: 'Payment Method:', value: paymentData.paymentMethodSummary || 'N/A' },
+      { label: 'Status:', value: paymentData.status.toUpperCase() }
+    ];
+    
+    doc.setFontSize(11);
+    details.forEach(detail => {
+      doc.setFont(undefined, 'bold');
+      doc.setTextColor(lightGray[0], lightGray[1], lightGray[2]);
+      doc.text(detail.label, 20, yPosition);
+      doc.setFont(undefined, 'normal');
+      doc.setTextColor(darkColor[0], darkColor[1], darkColor[2]);
+      doc.text(detail.value, 70, yPosition);
+      yPosition += 8;
+    });
+    
+    yPosition += 5;
+    
+    // Amount Section (highlighted)
+    doc.setFillColor(240, 253, 244); // Light green background
+    doc.rect(15, yPosition - 3, 180, 20, 'F');
+    
+    doc.setFontSize(16);
+    doc.setFont(undefined, 'bold');
+    doc.setTextColor(5, 150, 105); // Green color
+    doc.text('Total Amount:', 20, yPosition + 8);
+    doc.setFontSize(20);
+    doc.text(`LKR ${paymentData.amount.toFixed(2)}`, 150, yPosition + 8, { align: 'right' });
+    
+    yPosition += 30;
+    
+    // Appointment Details if available
+    if (appointmentData && appointmentData.doctor) {
+      doc.setFontSize(14);
+      doc.setFont(undefined, 'bold');
+      doc.setTextColor(darkColor[0], darkColor[1], darkColor[2]);
+      doc.text('Appointment Details', 20, yPosition);
+      
+      yPosition += 10;
+      doc.setDrawColor(200, 200, 200);
+      doc.line(20, yPosition, 190, yPosition);
+      
+      yPosition += 10;
+      
+      const appointmentDetails = [
+        { label: 'Doctor:', value: `Dr. ${appointmentData.doctor.name}` },
+        { label: 'Specialty:', value: appointmentData.doctor.specialty },
+        { label: 'Appointment Date:', value: formatAppointmentDate(appointmentData.date) },
+        { label: 'Time Slot:', value: appointmentData.slot }
+      ];
+      
+      doc.setFontSize(11);
+      appointmentDetails.forEach(detail => {
+        doc.setFont(undefined, 'bold');
+        doc.setTextColor(lightGray[0], lightGray[1], lightGray[2]);
+        doc.text(detail.label, 20, yPosition);
+        doc.setFont(undefined, 'normal');
+        doc.setTextColor(darkColor[0], darkColor[1], darkColor[2]);
+        doc.text(detail.value, 70, yPosition);
+        yPosition += 8;
+      });
+    }
+    
+    // Footer
+    yPosition = 270; // Near bottom of page
+    doc.setDrawColor(primaryColor[0], primaryColor[1], primaryColor[2]);
+    doc.line(20, yPosition, 190, yPosition);
+    
+    doc.setFontSize(10);
+    doc.setFont(undefined, 'italic');
+    doc.setTextColor(lightGray[0], lightGray[1], lightGray[2]);
+    doc.text('Thank you for choosing our healthcare services!', 105, yPosition + 8, { align: 'center' });
+    doc.text('For any queries, please contact our support team.', 105, yPosition + 14, { align: 'center' });
+    
+    // Save the PDF
+    doc.save(`payment-receipt-${paymentData.transactionId}.pdf`);
   };
 
   // Close payment confirmation
@@ -315,18 +457,24 @@ Thank you for your payment!
     setPaymentResult(null);
   };
 
+  // Format appointment details for display
+  const formatAppointmentDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { 
+      day: 'numeric',
+      month: 'short', 
+      year: 'numeric'
+    });
+  };
+
   const appointmentDetails = {
-    doctor: "Dr. Sarah Johnson",
-    specialty: "Cardiologist",
-    date: "9 Jan 2023, 10:00 am",
+    doctor: `Dr. ${appointmentData.doctor?.name || 'Unknown'}`,
+    specialty: appointmentData.doctor?.specialty || 'General',
+    date: `${formatAppointmentDate(appointmentData.date)}, ${appointmentData.slot}`,
     service: "Consultation",
-    discount: "$40",
-    subtotal: "120.00",
-    vat: "$18.00",
-    total: "$120.00",
-    factory: "9 Jan 2023, 10:00 am",
-    consultant: "$40.00",
-    cic: "CIC-294 BMW AG",
+    appointmentId: appointmentData.appointmentId,
+    consultationFee: appointmentData.amount || 0,
+    total: appointmentData.amount || 0,
   };
 
   return (
@@ -588,67 +736,61 @@ Thank you for your payment!
           <div className="kav-appointment-info">
             <div className="kav-logo-section">
               <div className="kav-bmw-logo">
-                <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-                  <circle
-                    cx="30"
-                    cy="30"
-                    r="28"
-                    fill="#1a1a1a"
-                    stroke="#fff"
-                    strokeWidth="2"
-                  />
-                  <circle
-                    cx="30"
-                    cy="30"
-                    r="24"
-                    fill="none"
-                    stroke="#fff"
-                    strokeWidth="1"
-                  />
-                  <path d="M30 6 L30 30 L54 30" fill="#4a9eff" opacity="0.8" />
-                  <path d="M30 30 L6 30 L30 54" fill="#fff" opacity="0.9" />
-                </svg>
+                <div style={{
+                  width: '60px',
+                  height: '60px',
+                  borderRadius: '50%',
+                  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'white',
+                  fontSize: '24px',
+                  fontWeight: 'bold'
+                }}>
+                  {appointmentData.doctor?.name?.charAt(0).toUpperCase() || 'D'}
+                </div>
               </div>
             </div>
 
             <div className="kav-appointment-details">
               <h4 className="kav-total-amount">
-                $ {appointmentDetails.total} Lakh
+                LKR {appointmentDetails.total}
               </h4>
               <div className="kav-detail-row">
-                <span className="kav-detail-label">Factory Year</span>
+                <span className="kav-detail-label">Doctor</span>
                 <span className="kav-detail-value">
-                  {appointmentDetails.factory}
+                  {appointmentDetails.doctor}
                 </span>
               </div>
               <div className="kav-detail-row">
-                <span className="kav-detail-label">Consultant</span>
+                <span className="kav-detail-label">Specialty</span>
                 <span className="kav-detail-value">
-                  {appointmentDetails.consultant}
+                  {appointmentDetails.specialty}
                 </span>
               </div>
               <div className="kav-detail-row">
-                <span className="kav-detail-label">Property</span>
+                <span className="kav-detail-label">Appointment Date</span>
                 <span className="kav-detail-value">
-                  {appointmentDetails.cic}
+                  {appointmentDetails.date}
                 </span>
               </div>
               <div className="kav-detail-row">
-                <span className="kav-detail-label">Discount</span>
+                <span className="kav-detail-label">Service</span>
                 <span className="kav-detail-value">
-                  -{appointmentDetails.discount}
+                  {appointmentDetails.service}
                 </span>
               </div>
               <div className="kav-detail-row">
-                <span className="kav-detail-label">Subtotal</span>
-                <span className="kav-detail-value">
-                  {appointmentDetails.subtotal}%
+                <span className="kav-detail-label">Appointment ID</span>
+                <span className="kav-detail-value" style={{ fontSize: '11px' }}>
+                  {appointmentDetails.appointmentId?.substring(0, 12)}...
                 </span>
               </div>
-              <div className="kav-detail-row">
-                <span className="kav-detail-label">Total</span>
-                <span className="kav-detail-value success">
-                  {appointmentDetails.vat}
+              <div className="kav-detail-row" style={{ borderTop: '1px solid #e5e7eb', paddingTop: '12px', marginTop: '12px' }}>
+                <span className="kav-detail-label" style={{ fontWeight: 'bold' }}>Total Amount</span>
+                <span className="kav-detail-value success" style={{ fontWeight: 'bold', fontSize: '16px' }}>
+                  LKR {appointmentDetails.total}
                 </span>
               </div>
             </div>
@@ -697,7 +839,7 @@ Thank you for your payment!
                 </div>
                 <div className="detail-row">
                   <span className="label">Amount:</span>
-                  <span className="value">${paymentResult.amount.toFixed(2)} {paymentResult.currency}</span>
+                  <span className="value">LKR {paymentResult.amount.toFixed(2)}</span>
                 </div>
                 <div className="detail-row">
                   <span className="label">Status:</span>

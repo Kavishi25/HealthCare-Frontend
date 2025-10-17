@@ -50,12 +50,13 @@ const Home = () => {
                     <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </Link>
-                <button className="book-appointment-btn secondary">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                    <path d="M10 0C4.477 0 0 4.477 0 10s4.477 10 10 10 10-4.477 10-10S15.523 0 10 0zm-1 14.414l-3.707-3.707 1.414-1.414L9 11.586l4.293-4.293 1.414 1.414L9 14.414z"/>
+                <Link to="/my-appointments" className="book-appointment-btn secondary">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+                    <path d="M6 2h8v2H6V2zm-2 4V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1h2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6h2z" strokeWidth="1.5"/>
+                    <path d="M8 9h4M8 13h4" strokeWidth="1.5" strokeLinecap="round"/>
                   </svg>
-                  How It Works
-                </button>
+                  My Appointments
+                </Link>
               </div>
               <div className="hero-stats">
                 {stats.map((stat, index) => (
@@ -122,12 +123,20 @@ const Home = () => {
           <div className="cta-content">
             <h2>Ready to Get Started?</h2>
             <p>Join thousands of satisfied patients who trust us with their healthcare needs</p>
-            <Link to="/doctors" className="cta-button">
-              Find Your Doctor Today
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </Link>
+            <div className="cta-buttons">
+              <Link to="/doctors" className="cta-button primary">
+                Find Your Doctor Today
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </Link>
+              <Link to="/my-appointments" className="cta-button secondary">
+                View My Appointments
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </Link>
+            </div>
           </div>
         </div>
       </main>

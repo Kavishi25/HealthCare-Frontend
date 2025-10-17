@@ -83,6 +83,25 @@
   font-weight: 500;
 }
 
+/* Charge Section */
+.rasa-doctor-charge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 8px 0;
+  font-size: 13px;
+  color: #059669;
+}
+
+.rasa-charge-icon {
+  font-size: 14px;
+}
+
+.rasa-charge-text {
+  font-weight: 600;
+  color: #047857;
+}
+
 /* Availability Section */
 .rasa-doctor-availability {
   display: flex;

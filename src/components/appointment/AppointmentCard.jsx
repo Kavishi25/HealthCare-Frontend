@@ -95,6 +95,28 @@ const AppointmentCard = ({ appointment, onCancel }) => {
             </div>
           </div>
 
+          {/* Consultation Fee */}
+          {appointment.doctor?.chargePerSlot && (
+            <div className="rasa-info-item">
+              <span className="rasa-info-icon" aria-hidden="true">💵</span>
+              <div className="rasa-info-content">
+                <span className="rasa-info-label">Consultation Fee</span>
+                <span className="rasa-info-value">LKR {appointment.doctor.chargePerSlot}</span>
+              </div>
+            </div>
+          )}
+
+          {/* Payment Status */}
+          <div className="rasa-info-item">
+            <span className="rasa-info-icon" aria-hidden="true">💳</span>
+            <div className="rasa-info-content">
+              <span className="rasa-info-label">Payment Status</span>
+              <span className={`rasa-info-value rasa-payment-status rasa-payment-${appointment.paymentStatus || 'unpaid'}`}>
+                {(appointment.paymentStatus || 'unpaid').toUpperCase()}
+              </span>
+            </div>
+          </div>
+
           {/* Appointment ID */}
           <div className="rasa-info-item rasa-info-item-full">
             <span className="rasa-info-icon" aria-hidden="true">🔖</span>

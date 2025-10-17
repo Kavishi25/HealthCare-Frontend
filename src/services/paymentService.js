@@ -23,7 +23,10 @@ class PaymentService {
           statusText: response.statusText,
           result: result
         });
-        throw new Error(result.message || 'Failed to create payment');
+        const error = new Error(result.message || 'Failed to create payment');
+        error.errors = result.errors; // Preserve validation errors
+        error.result = result; // Preserve full result
+        throw error;
       }
 
       console.log('✅ Payment created successfully:', result);

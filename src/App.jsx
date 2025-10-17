@@ -14,6 +14,7 @@ import ManageDoctors from "./pages/admin/ManageDoctors";
 // Patient Appointment Pages
 import BookAppointmentPage from "./pages/BookAppointmentPage";
 import MyAppointmentsPage from "./pages/MyAppointmentsPage";
+import PaymentsPage from "./pages/PaymentsPage";
 
 import Payment from "./pages/Payment";
 import "./styles/App.css";
@@ -32,13 +33,14 @@ function App() {
           {/* Patient Appointment Routes */}
           <Route path="/book-appointment" element={<BookAppointmentPage />} />
           <Route path="/my-appointments" element={<MyAppointmentsPage />} />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/payments" element={<PaymentsPage />} />
 
           {/* Admin Routes */}
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route path="/admin/appointments" element={<AdminAppointments />} />
           <Route path="/admin/profile" element={<AdminProfile />} />
           <Route path="/admin/manage-doctors" element={<ManageDoctors />} />
-          <Route path="/payment" element={<Payment />} />
         </Routes>
       </div>
     </Router>

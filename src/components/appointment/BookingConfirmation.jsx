@@ -92,6 +92,14 @@ const BookingConfirmation = ({
               <span className="rasa-detail-value">{slot}</span>
             </div>
           </div>
+          
+          <div className="rasa-detail-row rasa-detail-highlight">
+            <span className="rasa-detail-icon">💵</span>
+            <div className="rasa-detail-content">
+              <span className="rasa-detail-label">Consultation Fee</span>
+              <span className="rasa-detail-value rasa-detail-amount">LKR {doctor?.chargePerSlot || 0}</span>
+            </div>
+          </div>
         </div>
 
         {/* Terms and Conditions */}

@@ -37,8 +37,8 @@ const DoctorSearch = ({ onSearch, specialties = [] }) => {
   const hasActiveFilters = searchTerm || selectedSpecialty !== 'all';
 
   return (
-    <div className="rasa-doctor-search-container">
-      <h2 className="rasa-search-title">Find Your Doctor</h2>
+    <div className="rasa-doctor-search">
+      
       
       <div className="rasa-search-controls">
         {/* Search Input with Icon */}
@@ -51,9 +51,9 @@ const DoctorSearch = ({ onSearch, specialties = [] }) => {
             onChange={handleSearchChange}
             aria-label="Search doctors"
           />
-          <span className="rasa-search-icon" aria-hidden="true">🔍</span>
+        
         </div>
-
+<br/>
         {/* Specialty Filter Dropdown */}
         <div className="rasa-filter-wrapper">
           <select

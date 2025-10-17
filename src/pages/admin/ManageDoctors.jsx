@@ -15,6 +15,7 @@ const ManageDoctors = () => {
   const [formData, setFormData] = useState({
     name: '',
     specialty: '',
+    chargePerSlot: '',
     availableSlots: []
   });
   const [submitting, setSubmitting] = useState(false);
@@ -92,7 +93,7 @@ const ManageDoctors = () => {
 
       alert('✅ Doctor added successfully!');
       setShowAddModal(false);
-      setFormData({ name: '', specialty: '', availableSlots: [] });
+      setFormData({ name: '', specialty: '', chargePerSlot: '', availableSlots: [] });
       refetch();
     } catch (err) {
       alert('❌ Error: ' + err.message);
@@ -107,6 +108,7 @@ const ManageDoctors = () => {
     setFormData({
       name: doctor.name,
       specialty: doctor.specialty,
+      chargePerSlot: doctor.chargePerSlot || '',
       availableSlots: doctor.availableSlots || []
     });
     setShowEditModal(true);
@@ -273,6 +275,10 @@ const ManageDoctors = () => {
                         <span className="rasa-specialty-icon">🩺</span>
                         {doctor.specialty}
                       </p>
+                      <p className="rasa-doctor-charge">
+                        <span className="rasa-charge-icon">💵</span>
+                        <span className="rasa-charge-amount">LKR {doctor.chargePerSlot || 0}</span> per slot
+                      </p>
                     </div>
                   </div>
 
@@ -416,6 +422,24 @@ const ManageDoctors = () => {
                   onChange={handleInputChange}
                   required
                   placeholder="e.g., Cardiology, Neurology, Pediatrics"
+                  className="rasa-form-input"
+                />
+              </div>
+
+              <div className="rasa-form-group">
+                <label className="rasa-form-label">
+                  <span className="rasa-label-icon">💵</span>
+                  Charge Per Slot *
+                </label>
+                <input
+                  type="number"
+                  name="chargePerSlot"
+                  value={formData.chargePerSlot}
+                  onChange={handleInputChange}
+                  required
+                  min="0"
+                  step="0.01"
+                  placeholder="e.g., 100"
                   className="rasa-form-input"
                 />
               </div>
@@ -577,6 +601,24 @@ const ManageDoctors = () => {
                   value={formData.specialty}
                   onChange={handleInputChange}
                   required
+                  className="rasa-form-input"
+                />
+              </div>
+
+              <div className="rasa-form-group">
+                <label className="rasa-form-label">
+                  <span className="rasa-label-icon">💵</span>
+                  Charge Per Slot *
+                </label>
+                <input
+                  type="number"
+                  name="chargePerSlot"
+                  value={formData.chargePerSlot}
+                  onChange={handleInputChange}
+                  required
+                  min="0"
+                  step="0.01"
+                  placeholder="e.g., 100"
                   className="rasa-form-input"
                 />
               </div>

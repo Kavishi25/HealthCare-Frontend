@@ -1,5 +1,7 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+
+// Public Pages
 import Home from "./pages/Home";
 import Doctors from "./pages/Doctors";
 import About from "./pages/About";
@@ -15,6 +17,11 @@ import ManageDoctors from "./pages/admin/ManageDoctors";
 import BookAppointmentPage from "./pages/BookAppointmentPage";
 import MyAppointmentsPage from "./pages/MyAppointmentsPage";
 import PaymentsPage from "./pages/PaymentsPage";
+
+// Reports Pages
+import PatientReportsPage from './pages/PatientReportsPage';
+import AdminReportsPage from './pages/AdminReportsPage';
+import DashboardPage from './pages/DashboardPage';
 
 import Payment from "./pages/Payment";
 import "./styles/App.css";
@@ -41,6 +48,17 @@ function App() {
           <Route path="/admin/appointments" element={<AdminAppointments />} />
           <Route path="/admin/profile" element={<AdminProfile />} />
           <Route path="/admin/manage-doctors" element={<ManageDoctors />} />
+
+          {/* Reports Routes */}
+          <Route path="/admin/patient-reports" element={<PatientReportsPage />} />
+          <Route path="/admin/reports" element={<AdminReportsPage />} />
+          <Route path="/admin/dashboard" element={<DashboardPage />} />
+
+          {/* Admin base redirect */}
+          <Route path="/admin" element={<Navigate to="/admin/dashboard" replace />} />
+
+          {/* Payment Route */}
+          <Route path="/payment" element={<Payment />} />
         </Routes>
       </div>
     </Router>

@@ -1,0 +1,17 @@
+.report-filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+.report-table th, .report-table td {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  text-align: left;
+}

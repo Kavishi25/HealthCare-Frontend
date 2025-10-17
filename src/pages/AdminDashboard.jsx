@@ -61,7 +61,7 @@ const AdminDashboard = () => {
     {
       icon: "📊",
       label: "Dashboard",
-      path: "/admin-dashboard",
+      path: "/admin/dashboard",
       isActive: true,
     },
     {
@@ -71,15 +71,15 @@ const AdminDashboard = () => {
       isActive: false,
     },
     {
-      icon: "👨‍⚕️",
-      label: "Manage Doctors",
-      path: "/admin/manage-doctors",
+      icon: "📈",
+      label: "System Reports",
+      path: "/admin/reports",
       isActive: false,
     },
     {
-      icon: "👤",
-      label: "Profile",
-      path: "/admin/profile",
+      icon: "🧑‍⚕️",
+      label: "Patient Reports",
+      path: "/admin/patient-reports",
       isActive: false,
     },
   ];
